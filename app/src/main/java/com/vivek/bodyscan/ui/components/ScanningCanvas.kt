@@ -56,9 +56,10 @@ fun ScanningCanvas(
         val canvasHeight = size.height
 
         val circle = Path().apply {
-            addOval(oval = Rect(scannedOffset, 200f))
+            addOval(oval = Rect(scannedOffset, 300f))
         }
 
+        // Overlay Image
         drawImage(
             image = overlayImage,
             dstOffset = IntOffset(
@@ -69,13 +70,16 @@ fun ScanningCanvas(
         )
 
         clipPath(circle, clipOp = ClipOp.Intersect) {
+            // Background Color
             drawRect(
                 brush = SolidColor(BaseScreenBGColor),
                 size = Size(canvasWidth, canvasHeight)
             )
 
+            // Selected Icon Text
             drawBGText(drawContext = drawContext, text = selectedIconString)
 
+            // Base Image
             drawImage(
                 image = baseImage,
                 dstOffset = IntOffset(
