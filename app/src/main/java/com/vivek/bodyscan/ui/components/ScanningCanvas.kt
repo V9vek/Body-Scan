@@ -36,7 +36,7 @@ fun ScanningCanvas(
     baseImage: ImageBitmap,
     modifier: Modifier
 ) {
-    var scannedOffset by remember { mutableStateOf(Offset(-200f, -200f)) }
+    var scannedOffset by remember { mutableStateOf(Offset(-500f, -500f)) }
 
     Canvas(
         modifier = modifier

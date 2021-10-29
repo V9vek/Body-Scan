@@ -41,9 +41,7 @@ fun OverlayScreen(
 ) {
     var isRowOpen by remember { mutableStateOf(false) }
 
-    Box(
-        modifier = modifier
-    ) {
+    Box(modifier = modifier) {
         // IconsRow
         Row(
             modifier = Modifier
