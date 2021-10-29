@@ -12,7 +12,7 @@ Having Fun in Jetpack Compose 🚀 PART 2 😉
 
 ## :camera_flash: Video
 
-
+https://user-images.githubusercontent.com/40730402/139488764-609538a1-0d19-4470-9459-3563b14a75e6.mp4
 
 ## License
 ```
