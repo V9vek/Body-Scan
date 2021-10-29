@@ -1,16 +1,11 @@
 package com.vivek.bodyscan.ui.screens
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -25,9 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
@@ -43,44 +36,27 @@ import com.vivek.bodyscan.util.BaseImageConstants.NERVES
 
 @Composable
 fun OverlayScreen(
-    currentlySelectedIcon: String,
-    onSelectedIcon: (String) -> Unit
+    onSelectedIcon: (String) -> Unit,
+    modifier: Modifier
 ) {
-//    println(currentlySelectedIcon)
     var isRowOpen by remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier
-            .alpha(0.2f)
-            .fillMaxSize()
-            .background(color = OverlayScreenBGColor)
+        modifier = modifier
     ) {
-        Column {
-            // IconsRow
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .align(Alignment.CenterHorizontally),
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconsRow(
-                    modifier = Modifier,
-                    isRowOpen = isRowOpen,
-                    onToggleRow = { isRowOpen = it },
-                    onSelectedIcon = onSelectedIcon
-                )
-            }
-
-            // Overlay Image
-            Image(
-                painter = painterResource(id = R.drawable.body),
-                contentDescription = "body",
-                modifier = Modifier
-                    .padding(bottom = 16.dp, top = 8.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .size(height = 600.dp, width = 300.dp)
+        // IconsRow
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.Center),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconsRow(
+                modifier = Modifier,
+                isRowOpen = isRowOpen,
+                onToggleRow = { isRowOpen = it },
+                onSelectedIcon = onSelectedIcon
             )
         }
     }
@@ -98,7 +74,7 @@ fun IconsRow(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(50))
-            .background(color = Color.White)
+            .background(color = BaseScreenBGColor)
             .padding(horizontal = if (isRowOpen) 8.dp else 0.dp)
             .animateContentSize(),
     ) {
@@ -106,7 +82,7 @@ fun IconsRow(
             Icon(
                 imageVector = Icons.Rounded.ArrowBackIosNew,
                 contentDescription = "Open Row Icon",
-                tint = BaseScreenBGColor,
+                tint = OverlayScreenBGColor,
                 modifier = Modifier
                     .padding(4.dp)
                     .clickable { toggleRow() }
@@ -157,12 +133,12 @@ fun CustomIcon(
         modifier = Modifier
             .padding(4.dp)
             .clip(CircleShape)
-            .background(BaseScreenBGColor.copy(alpha = 0.1f))
+            .background(OverlayScreenBGColor.copy(alpha = 0.1f))
     ) {
         Icon(
             painter = icon,
-            contentDescription = "TODO: add something here",
-            tint = BaseScreenBGColor,
+            contentDescription = "",
+            tint = OverlayScreenBGColor,
             modifier = Modifier
                 .clickable { onClick() }
                 .size(size)

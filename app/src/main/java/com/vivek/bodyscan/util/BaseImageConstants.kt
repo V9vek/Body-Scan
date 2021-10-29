@@ -1,9 +1,9 @@
 package com.vivek.bodyscan.util
 
 object BaseImageConstants {
-    const val BONES = "bones"
-    const val BLOOD = "blood"
-    const val NERVES = "nerves"
-    const val DIGESTION = "digestion"
-    const val MUSCLES = "muscles"
+    const val BONES = "Bones"
+    const val BLOOD = "Blood"
+    const val NERVES = "Nerves"
+    const val DIGESTION = "Digestion"
+    const val MUSCLES = "Muscles"
 }
