@@ -1,6 +1,7 @@
 package com.vivek.bodyscan.ui.components
 
 import android.graphics.Typeface
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -37,7 +38,8 @@ fun ScanningCanvas(
     modifier: Modifier
 ) {
     var scannedOffset by remember { mutableStateOf(Offset(-500f, -500f)) }
-    var circleRadius by remember { mutableStateOf(300f) }
+    var isDragging by remember { mutableStateOf(false) }
+    val circleRadius by animateFloatAsState(targetValue = if (isDragging) 300f else 0f)
 
     Canvas(
         modifier = modifier
@@ -47,10 +49,10 @@ fun ScanningCanvas(
             .pointerInput(Unit) {
                 detectDragGestures(
                     onDragStart = {
-                        circleRadius = 300f
+                        isDragging = true
                     },
                     onDragEnd = {
-                        circleRadius = 0f
+                        isDragging = false
                     }
                 ) { change, _ ->
                     scannedOffset = change.position
