@@ -37,6 +37,7 @@ fun ScanningCanvas(
     modifier: Modifier
 ) {
     var scannedOffset by remember { mutableStateOf(Offset(-500f, -500f)) }
+    var circleRadius by remember { mutableStateOf(300f) }
 
     Canvas(
         modifier = modifier
@@ -44,7 +45,16 @@ fun ScanningCanvas(
             .background(OverlayScreenBGColor)
             .padding(4.dp)
             .pointerInput(Unit) {
-                detectDragGestures { change, _ ->
+                detectDragGestures(
+                    onDragStart = { offset ->
+                        scannedOffset = offset
+                        circleRadius = 300f
+                    },
+                    onDragEnd = {
+                        scannedOffset = Offset.Zero
+                        circleRadius = 0f
+                    }
+                ) { change, _ ->
                     scannedOffset = change.position
                 }
             }
@@ -56,7 +66,7 @@ fun ScanningCanvas(
         val canvasHeight = size.height
 
         val circle = Path().apply {
-            addOval(oval = Rect(scannedOffset, 300f))
+            addOval(oval = Rect(scannedOffset, circleRadius))
         }
 
         // Overlay Image
