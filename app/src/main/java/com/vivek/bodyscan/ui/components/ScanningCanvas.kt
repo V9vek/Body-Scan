@@ -46,12 +46,10 @@ fun ScanningCanvas(
             .padding(4.dp)
             .pointerInput(Unit) {
                 detectDragGestures(
-                    onDragStart = { offset ->
-                        scannedOffset = offset
+                    onDragStart = {
                         circleRadius = 300f
                     },
                     onDragEnd = {
-                        scannedOffset = Offset.Zero
                         circleRadius = 0f
                     }
                 ) { change, _ ->
