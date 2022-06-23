@@ -2,13 +2,12 @@
 
 
 ## :scroll: Description
-Demonstrating a effect that I can't name 😜, maybe you can
-<br>
-Just look at the video and code
+Body Scan is a minimal Android app made with Jetpack Compose. The main purpose of this project is to showcase the Canvas API and this is an interesting implementation of path clipping.
+Just look at the video.
 
 
 ## :bulb: Motivation and Context
-Having Fun in Jetpack Compose 🚀 PART 2 😉
+Exploring the Canvas API and wanted to have fun in Jetpack Compose 🚀 😉
 
 ## :camera_flash: Video
 
@@ -16,7 +15,7 @@ https://user-images.githubusercontent.com/40730402/139488764-609538a1-0d19-4470-
 
 ## License
 ```
-Copyright 2020 Vivek Sharma
+Copyright 2021 Vivek Sharma
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
